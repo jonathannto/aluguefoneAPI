@@ -1,0 +1,4 @@
+INSERT INTO `cliente` (`nome`,`email`,`telefone`) VALUES 
+    ('Cyrus','eu@Curabitur.com','(39)84388-1489'),('Jelani','ut.sem.Nulla@quisturpisvitae.com','(20)76411-1518'),('Dante','placerat@quispedeSuspendisse.org','(05)14432-3400'),('Carter','molestie@faucibusleoin.net','(66)86803-5811'),
+    ('Macon','lectus.Nullam@luctusut.edu','(86)43894-3012'),('Hashim','blandit.mattis.Cras@justo.org','(43)71455-7020'),('Boris','rutrum.lorem.ac@atpede.edu','(11)92278-2894'),('Eric','sapien.Nunc.pulvinar@afacilisisnon.net','(32)06342-3392'),
+    ('Channing','sit@Nullam.com','(78)68030-0993'),('Tobias','Proin@nibhPhasellus.com','(68)31629-8392')
