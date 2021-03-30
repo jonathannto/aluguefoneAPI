@@ -9,11 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Cliente {
 	
@@ -25,6 +26,7 @@ public class Cliente {
 	private String email;
 	private String telefone;
 	
-	@OneToMany
-	private List<Celular> celular = new ArrayList<>();
+	@OneToMany(mappedBy = "cliente")
+	@JsonManagedReference
+	private List<Celular> celulares = new ArrayList<>();
 }
