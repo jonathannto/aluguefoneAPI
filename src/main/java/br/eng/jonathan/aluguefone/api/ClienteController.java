@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.eng.jonathan.aluguefone.domain.model.Cliente;
+import br.eng.jonathan.aluguefone.domain.model.ClienteNumSerie;
 import br.eng.jonathan.aluguefone.domain.repository.ClienteRepository;
 import br.eng.jonathan.aluguefone.domain.service.CadastroClienteService;
 import io.swagger.annotations.Api;
@@ -50,6 +51,42 @@ public class ClienteController {
 		
         return ResponseEntity.notFound().build();
 	}
+	
+	@ApiOperation(value = "Lista apenas o nome do cliente e número de série dos celulares em posse do cliente.")
+	@GetMapping("/buscarClientesNumSerie/{clienteId}")
+	public ResponseEntity<ClienteNumSerie> buscarClientesNumSerie(@PathVariable Long clienteId) {
+		
+		Optional<Cliente> cliente = clienteRepository.findById(clienteId);
+		if(cliente.isPresent()) {
+			
+			ClienteNumSerie clienteNumSerie = new ClienteNumSerie();
+			
+			clienteNumSerie.setNome(cliente.get().getNome());
+			clienteNumSerie.setNumSerie(cliente.get().getCelulares().get(0).getNumSerie());
+			
+			
+		return ResponseEntity.ok(clienteNumSerie);
+		}
+		
+        return ResponseEntity.notFound().build();
+	}
+	
+	
+	
+	@ApiOperation(value = "Realiza a busca por nome ou partes do nome")
+	@GetMapping("/buscarPorNome/{nome}")
+	public ResponseEntity<List<Cliente>> buscarPorNome(@PathVariable String nome) {
+		
+		List<Cliente> clientesRecuperados = clienteRepository.findByNomeContaining(nome);
+		
+		if(!clientesRecuperados.isEmpty()) {
+			return ResponseEntity.ok(clientesRecuperados);
+		}
+		
+		return ResponseEntity.notFound().build();
+		
+	}
+	
 	
 	@ApiOperation(value = "Insere um cliente")
 	@PostMapping
