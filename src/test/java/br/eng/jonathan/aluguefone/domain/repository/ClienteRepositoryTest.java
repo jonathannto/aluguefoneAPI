@@ -2,6 +2,8 @@ package br.eng.jonathan.aluguefone.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,13 @@ public class ClienteRepositoryTest {
 				+ "");
 		assertThat(!cliente.getEmail().isEmpty());
 	}
+	
+	@Test
+	public void testaMetodoRecuperarTodosOsClientes() {
+		List<Cliente> clienteLista = clienteRepository.findAll();
+		
+		assertThat(!clienteLista.isEmpty());
+	}
+	
 	
 }
