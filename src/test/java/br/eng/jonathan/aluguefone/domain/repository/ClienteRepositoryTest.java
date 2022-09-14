@@ -21,19 +21,6 @@ public class ClienteRepositoryTest {
 	ClienteRepository clienteRepository;
 	
 	@Test
-	public void testaClienteJonathanExiste() {
-		Cliente cliente = clienteRepository.findByNome("Jonathan");
-		assertThat(!cliente.getNome().isEmpty());
-	}
-	
-	@Test
-	public void testaRecuperarPorEmail() {
-		Cliente cliente = clienteRepository.findByEmail("jonathan@jonathan.eng.br"
-				+ "");
-		assertThat(!cliente.getEmail().isEmpty());
-	}
-	
-	@Test
 	public void testaMetodoRecuperarTodosOsClientes() {
 		List<Cliente> clienteLista = clienteRepository.findAll();
 		
